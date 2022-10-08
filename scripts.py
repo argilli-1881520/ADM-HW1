@@ -611,7 +611,19 @@ n = calendar.weekday(m_d_y[2],m_d_y[0],m_d_y[1])
 print(calendar.day_name[n].upper())
 
 # Date and Time - Time Delta
-# Wrong Answer
+def time_delta(t1, t2):
+    d1 = datetime.strptime(t1, "%a %d %b %Y %H:%M:%S %z")
+    d2 = datetime.strptime(t2, "%a %d %b %Y %H:%M:%S %z")
+    delta = d1-d2 
+    return str(int(abs(delta.total_seconds())))
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    t = int(input())
+
+    for t_itr in range(t):
+        t1 = input()
 
 # Exceptions
 for cases in range(int(input())):
@@ -987,8 +999,13 @@ for _ in range(int(input())):
     
     print(re.sub("(?<=\s)&{2}(?=\s)|(?<=\s)\|{2}(?=\s)",modifier,s))
 
+# Regex and Parsing - Validating Roman Numerals
+# Answer taken from the discussion section of HackerRank
+regex_pattern = r"^M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$"	
 
 # Regex and Parsing - Validating Postal Codes
+regex_integer_in_range = r"^[1-9][0-9]{5}$"	# Do not delete 'r'.
+regex_alternating_repetitive_digit_pair = r"(\d)(?=\d\1)"	# Do not delete 'r'.
 
 # Numpy - Arrays
 def arrays(arr):
